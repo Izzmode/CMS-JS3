@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const register = async (formData) => {
     const product = {
       name: formData.name,

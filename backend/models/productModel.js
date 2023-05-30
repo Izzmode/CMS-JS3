@@ -15,7 +15,7 @@ exports.addProduct = async (req, res) => {
   const product = await Product.create({ name, description, price, imageURL, tags, rating, review });
 
   if(!product) res.status(500).json({ message: 'Something went wrong when creating new product' });
-
+  
   return res.status(201).json(product)
 }
 
@@ -24,9 +24,6 @@ exports.addProduct = async (req, res) => {
 exports.getProducts = async (req, res) => {
 
   const products = await Product.find();
-  // const test = localStorage.getItem('token');
-  // console.log(token)
-
   if(!products) res.status(500).json({ message: 'Something went wrong when getting products' });
 
   res.status(200).json(products)

@@ -34,9 +34,16 @@ exports.getOrders = async (req, res) => {
 exports.getOrderById = async (req, res) => {
 
   const order = await Order.findById(req.params.id)
+  .populate({ 
+    path: 'orderRow.product', select: 'name price imageURL'
+  })
+
+  .populate({
+    path: 'customerId', select: 'email'
+  })
 
   if(!order) res.status(404).json({ message: 'Could not find order' })
-
+  // 
   res.status(200).json(order)
 }
 
@@ -50,3 +57,4 @@ exports.getOrdersByUser = async (req, res) => {
 
   res.status(200).json(orders)
 }
+

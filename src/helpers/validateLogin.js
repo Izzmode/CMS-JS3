@@ -12,17 +12,12 @@ export const validateLogin = ( formData, setErrors ) => {
         err.email = 'You need to enter a valid email address'
       }
 
-
-    // password & confirm password 
-    // const passwordRegex = /^(?=.*[a-ö])(?=.*[A-Ö])(?=.*\d)(?=.*[!])[a-öA-Ö\d!]{8,}$/
-
     if(formData.password.trim() === '') {
     err.password = 'You need to enter a password'
     }
     else if (formData.password.length < 8) {
     err.password = ' Your password needs to be atleast 8 characters long'
     } 
-    // console.log(err)
 
   console.log(err)  
   setErrors(err)

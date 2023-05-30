@@ -85,26 +85,3 @@ exports.login = async (req, res) => {
     return res.status(500).json({ message: 'Server error' });
   }
 };
-
-// exports.login = async (req, res) => {
-  
-//   const { email, password } = req.body;
-
-//   if(!email || !password) res.status(400).json({ message: 'You need to enter an email address and a password' })
-
-//   // Checking if input email exists as saved user email
-//   const user = await User.findOne({ email });
-//   if(!user) return res.status(401).json({ message: 'Incorrect credentials' })
-  
-
-//   // Comparing entered password with decrypted saved password
-//   const result = await bcrypt.compare(password, user.passwordHash);
-//   if(!result) return res.status(401).json({ message: 'Incorrect credentials' })
-
-//   // Generating token
-//   res.status(200).json(generateToken(user))
-
-//   // Returning user object
-//   return res.status(200)
-//   // .json(user)
-// }

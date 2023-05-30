@@ -36,22 +36,18 @@ const Navbar = () => {
         </Link>
         <ul className="nav-links">
           <li><NavLink to='/' className='nav-link'>Home</NavLink></li>
-          <li><NavLink to={user == null ? `/login` : `/products`} className='nav-link'>Products</NavLink></li>
+          <li><NavLink to={`/products`} className='nav-link'>Products</NavLink></li>
           { user
             ? (
               <>
-                <li><NavLink to='/orders' className='nav-link'>My orders</NavLink></li>
+                <li><NavLink to='/orders' className='nav-link'>All orders</NavLink></li>
                 <li><button className='nav-link nav-link-grey' onClick={logout}>Logout</button></li>
               </>
             )
             : <li><NavLink to='/login' className='nav-link nav-link-grey'>Login</NavLink></li>
             
              }
-          <li>
-            <span className='nav-link nav-link-grey' onClick={() => setShowCart(showCart => !showCart)}>
-            </span>
             
-          </li>
         </ul>
       </div>
     </div>

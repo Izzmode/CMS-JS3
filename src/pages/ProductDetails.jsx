@@ -2,7 +2,7 @@ import React from 'react'
 import useFetch from '../hooks/useFetch'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { deleteProduct, updateProduct } from '../store/features/products/productSlice'
 import FormInput from '../components/FormInput'
 
@@ -54,6 +54,7 @@ const ProductDetails = () => {
       return {
         ...form,
         [id]: value
+       
       }
     })
   }
@@ -74,6 +75,9 @@ const ProductDetails = () => {
           <hr></hr>
           <p><i>Product price:</i></p>
           <h4 className='price'>{'$' + product.price}</h4>
+          <hr></hr>
+          <p><i>Product tags:</i></p>
+          <h4 className='tags'>{product.tags.map((tag) => <p>#{tag}</p>)}</h4>
           <hr></hr>
           {form && 
           <form noValidate>

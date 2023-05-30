@@ -1,6 +1,6 @@
 import ProductCard from '../components/ProductCard'
 import useFetch from '../hooks/useFetch'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Products = () => {
 

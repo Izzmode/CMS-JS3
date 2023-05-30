@@ -1,16 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from "./pages/Home"
 import Products from "./pages/Products"
-// import Contact from "./pages/Contact"
 import Login from "./pages/Login"
-// import Registration from "./pages/Registration"
 import ProductDetails from "./pages/ProductDetails"
 import Navbar from './components/Navbar'
 import CreateProduct from './pages/CreateProduct'
-// import Footer from './components/Footer'
-// import Checkout from './pages/Checkout'
-// import UserProfile from './pages/UserProfile'
-// import OrderList from './pages/OrderList'
+import { ProtectedRoute } from './routes/ProtectedRoute'
+import OrderList from './pages/OrderList'
+import OrderDetails from './pages/OrderDetails'
 
 const App = () => {
 
@@ -19,16 +16,37 @@ const App = () => {
         <Navbar />
         <Routes>
             <Route path="/" element= { <Home/>}/>
-            <Route path="/products" element= { <Products />}/>
-            <Route path="/products/:id" element= { <ProductDetails/>}/>
-            <Route path="/products/add" element= { <CreateProduct/>}/>
-            {/* <Route path= "/orders" element ={<OrderList/>}/> */}
+    
+            <Route path="/products" element= { 
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+              }/>
+
+            <Route path="/products/:id" element= { 
+            <ProtectedRoute>
+              <ProductDetails/>
+            </ProtectedRoute>
+            }/>
+
+            <Route path="/products/add" element= { 
+            <ProtectedRoute>
+              <CreateProduct/>
+            </ProtectedRoute>
+            }/>
+
+            <Route path= "/orders" element ={
+            <ProtectedRoute>
+              <OrderList/>
+            </ProtectedRoute>}/>
+
+            <Route path= "/orders/:id" element ={
+            <ProtectedRoute>
+              <OrderDetails/>
+            </ProtectedRoute>}/>
+            
             <Route path="/login" element= { <Login/>}/>
-            {/* <Route path="/registration" element= { <Registration/>}/> */}
-            {/* <Route path='/checkout' element={<Checkout />} /> */}
-            {/* <Route path='/user' element={<UserProfile />} /> */}
             </Routes>
-        {/* <Footer /> */}
     </div>
   )
 }

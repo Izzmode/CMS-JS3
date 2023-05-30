@@ -19,7 +19,7 @@ const CreateProduct = () => {
     description: '',
     price: '',
     imageURL: '',
-    tags: '',
+    tags: [],
   })
 
   const handleChange = e => {
@@ -41,14 +41,7 @@ const CreateProduct = () => {
 
     dispatch(registerProduct(formData))
     .then(() => navigate('/products'))
-    // setSubmitted(true)
   }
-
-//   useEffect(() => {
-//     if(user !== null){
-//       navigate("/")
-//     } 
-//   }, [ submitted, user ])
 
   return (
     <form noValidate onSubmit={handleSubmit} className='createForm'>
