@@ -53,15 +53,14 @@ const deleteProduct = async (id) => {
 //update product
 
 const updateProduct = async ({id, formData}) => {
-  console.log(id)
 
-  const product = {
-    name: formData.name,
-    description: formData.description,
-    price: formData.price,
-    imageURL: formData.imageURL,
-    tags: formData.tags
-  }
+  // const product = {
+  //   name: formData.name,
+  //   description: formData.description,
+  //   price: formData.price,
+  //   imageURL: formData.imageURL,
+  //   tags: formData.tags
+  // }
 
   const res = await fetch('http://localhost:9999/api/products/' + id, {
   method: 'PUT',

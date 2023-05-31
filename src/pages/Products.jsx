@@ -7,10 +7,6 @@ const Products = () => {
   const { data: products, isLoading, error } = useFetch('http://localhost:9999/api/products')
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/products/add')
-  }
-
   return (
     <div className='Products'>
       <button onClick={() => navigate('/products/add')}>Create new product</button>

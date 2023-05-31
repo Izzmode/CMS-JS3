@@ -12,7 +12,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { data: product } = useFetch('http://localhost:9999/api/products/' + id)
+  const { data: product, isLoading, error } = useFetch('http://localhost:9999/api/products/' + id)
 
   //to hide and show form
   const [form, setForm] = useState(false);
@@ -23,6 +23,7 @@ const ProductDetails = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
+
 
   const handleDelete = () => {
     dispatch(deleteProduct(id))
@@ -39,7 +40,6 @@ const ProductDetails = () => {
     setFormData(form => {
       return {
         ...form
-        // product
       }
     })
 
@@ -65,6 +65,7 @@ const ProductDetails = () => {
       <div className='product-detail-top'>
       
         <img src={product.imageURL} alt="" width={501} height={430} />
+        {console.log(product)}
 
         <div className='product-description'>
           <p><i>Product name:</i></p>
@@ -118,15 +119,9 @@ const ProductDetails = () => {
           />
           </form>}
       
-
-
-
           {!form && <button className='wish-btn' onClick={handleUpdate}>Update product</button>}
           {form &&<button className='wish-btn' onClick={handleSave}>Save Changes</button>}
           <button className='delete-btn' onClick={handleDelete}>Delete product</button>
-          
-          
-         
 
         </div>
 

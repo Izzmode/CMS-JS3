@@ -2,19 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllOrders } from '../store/features/orders/orderSlice';
 import { NavLink } from 'react-router-dom'
+import useFetch from '../hooks/useFetch';
 
 
 const OrderList = () => {
 
-
-    const dispatch = useDispatch();
-    const { products } = useSelector(state => state.products);
-    const { orders } = useSelector(state => state.orders);
-    const { user } = useSelector(state => state.auth)
-
-    useEffect(() => {
-        dispatch(getAllOrders());
-    }, []);
+    const { data: orders } = useFetch('http://localhost:9999/api/orders/')
 
     return (
       <div className='prevOrders'>
@@ -23,10 +16,7 @@ const OrderList = () => {
                     <NavLink to={`/orders/${order._id}` }>
 
                 <div key={order._id} className='order-wrapper'>
-                       { console.log(order._id) }
-                    
                     <p className='ordernumber'><b>Ordernumber:</b> {order._id}</p>
-                    {console.log(order)}
                     {order.orderRow.map((row) => (
                         
                         <div key={row._id} className='row-wrapper'>

@@ -16,6 +16,15 @@ const initialState = {
     }
   })
 
+  export const updateOrderStatus = createAsyncThunk('orders/updateOrderStatus', async (updatedOrder, id, thunkAPI) => {
+    try {
+      return await orderService.updateOrder(updatedOrder, id)
+      
+      } catch (err) {
+      return thunkAPI.rejectWithValue(err.message)
+    }
+  })
+
 
 export const orderSlice = createSlice({
     name: 'orders',
@@ -32,6 +41,19 @@ export const orderSlice = createSlice({
           state.error = null
         })
         .addCase(getAllOrders.rejected, (state, action) => {
+          state.loading = false
+          state.orders = []
+          state.error = action.payload
+        })
+        .addCase(updateOrderStatus.pending, state => {
+          state.loading = true
+        })
+        .addCase(updateOrderStatus.fulfilled, (state, action) => {
+          state.loading = false
+          state.orders = action.payload
+          state.error = null
+        })
+        .addCase(updateOrderStatus.rejected, (state, action) => {
           state.loading = false
           state.orders = []
           state.error = action.payload

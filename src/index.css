@@ -487,11 +487,15 @@
 
     .order-details{
         display: flex;
-        flex-direction: column;
         align-items: center;
+        justify-content: space-around;
         padding: 1rem;
         text-align: center;
    
+    }
+ 
+    .order-status h2 {
+        padding-top: 2rem;
     }
 
     .order-description{
@@ -513,6 +517,52 @@
     .order-orderDetails{
         padding: 1rem;
         box-shadow: 3px 3px 5px 3px rgb(154, 153, 153);
+    }
+
+    .statusBtns{
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .statusBtns button {
+        padding: .3rem;
+        width: 100px;
+        border-radius: 3px;
+        border: transparent;
+        cursor: pointer;
+    }
+
+    .route{
+        background-color: rgb(251, 251, 69);
+    }
+    .route:hover{
+        background-color: hsl(60, 96%, 68%);
+    }
+
+    .completed{
+        background-color: rgb(71, 223, 71);
+    }
+    .completed:hover{
+        background-color: hsl(120, 70%, 63%);
+    }
+
+    .cancelled {
+        background-color:hwb(350 11% 10%);
+    }
+    .cancelled:hover {
+        background-color:hwb(350 11% 5%);
+    }
+
+    .btn-save{
+        width: 400px;
+        padding: .7rem;
+        border: transparent;
+        background-color: rgb(129, 128, 128);
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
     }
 
 

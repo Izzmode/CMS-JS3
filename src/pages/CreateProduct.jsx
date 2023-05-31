@@ -8,7 +8,6 @@ import { registerProduct } from '../store/features/products/productSlice'
 const CreateProduct = () => {
 
   const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
   const { product } = useSelector(state => state.auth)
 
   const dispatch = useDispatch()

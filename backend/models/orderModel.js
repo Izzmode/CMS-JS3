@@ -4,13 +4,14 @@ const Order = require('../schemas/orderSchema');
 
 exports.addOrder = async (req, res) => {
   
-  const { customerId, orderRow } = req.body;
+  const { customerId, orderRow, orderStatus } = req.body;
   if(!orderRow) return res.status(400).json({ message: 'You need to enter products and quantity to your cart' })
 
   // Creating new order with the logged in user's id as customerId
   const order = await Order.create({
     customerId,
-    orderRow
+    orderRow,
+    orderStatus
   })
 
   if(!order) return res.status(500).json({ message: 'Something went wrong when creating order' })
@@ -22,7 +23,9 @@ exports.addOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
 
-  const orders = await Order.find().populate({ path: 'orderRow.product', select: 'name price imageURL' })
+  const orders = await Order.find()
+  .populate({ path: 'orderRow.product', select: 'name price imageURL' })
+  .populate({ path: 'orderStatus', select: 'status' })
 
   if(!orders) res.status(500).json({ message: 'Something went wrong when getting orders' })
 
@@ -41,6 +44,9 @@ exports.getOrderById = async (req, res) => {
   .populate({
     path: 'customerId', select: 'email'
   })
+  .populate({
+    path: 'orderStatus', select: 'status'
+  })
 
   if(!order) res.status(404).json({ message: 'Could not find order' })
   // 
@@ -56,5 +62,15 @@ exports.getOrdersByUser = async (req, res) => {
   if(!orders) res.status(404).json({ message: 'Could not find orders' })
 
   res.status(200).json(orders)
+}
+
+exports.updateOrder = async (req, res) => {
+
+  // Finding order by id and displaying updated version
+  const order = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+  if(!order) res.status(404).json({ message: 'Could not find order' });
+
+  res.status(200).json(order)
 }
 
