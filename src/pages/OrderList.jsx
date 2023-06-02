@@ -13,9 +13,11 @@ const OrderList = () => {
       <div className='prevOrders'>
             <h1>Previous orders</h1>
             {orders && orders.map((order) => (
-                    <NavLink to={`/orders/${order._id}` }>
 
                 <div key={order._id} className='order-wrapper'>
+                <NavLink to={`/orders/${order._id}` }>
+
+                    <div>
                     <p className='ordernumber'><b>Ordernumber:</b> {order._id}</p>
                     {order.orderRow.map((row) => (
                         
@@ -27,8 +29,10 @@ const OrderList = () => {
                             <p><b>Quantity:</b> { row.product && row.quantity}</p>
                         </div>
                     ))}
-                </div>
+                    </div>
                 </NavLink>
+
+                </div>
 
             ))}
         </div>

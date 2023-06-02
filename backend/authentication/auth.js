@@ -1,5 +1,3 @@
-
-
 const Admin = require('../schemas/adminSchema')
 
 const jwt = require('jsonwebtoken');
@@ -17,18 +15,18 @@ exports.generateToken = (user) => {
 
 
 
-exports.verifyToken = (req, res, next) => {
-  try {
+// exports.verifyToken = (req, res, next) => {
+//   try {
     
-    const token = req.headers.authorization.split(' ')[1]
-    req.userId = jwt.verify(token, secretKey)._id
-    // req.userData = jwt.verify(token, secretKey)
-    next();
+//     const token = req.headers.authorization.split(' ')[1]
+//     req.userId = jwt.verify(token, secretKey)._id
+//     // req.userData = jwt.verify(token, secretKey)
+//     next();
 
-  } catch {
-    res.status(401).json({ message: 'Access restricted. You need to login.' })
-  }
-}
+//   } catch {
+//     res.status(401).json({ message: 'Access restricted. You need to login.' })
+//   }
+// }
 
 // exports.verifyToken = (req, res, next) => {
 //   try {
@@ -65,20 +63,20 @@ exports.verifyToken = (req, res, next) => {
 //   }
 // };
 
-exports.checkAdmin = async (req, res, next) => {
+// exports.checkAdmin = async (req, res, next) => {
 
-  console.log(req.userId)
-  const admin = await Admin.findOne({ adminId: req.userId })
+//   console.log(req.userId)
+//   const admin = await Admin.findOne({ adminId: req.userId })
 
 
-  if(!admin) {
-    return res.status(401).json({
-      message: 'you need to be admin to be able to do this'
-    })
-  }
+//   if(!admin) {
+//     return res.status(401).json({
+//       message: 'you need to be admin to be able to do this'
+//     })
+//   }
 
-  next()
-}
+//   next()
+// }
 
 
 // exports.checkAdmin = (req, res, next) => {

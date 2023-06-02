@@ -35,7 +35,6 @@ const register = async (formData) => {
 
 //delete product by id
 const deleteProduct = async (id) => {
-  console.log(id)
 
   const res = await fetch('http://localhost:9999/api/products/' + id, {
   method: 'DELETE',

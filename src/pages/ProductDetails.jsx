@@ -65,7 +65,6 @@ const ProductDetails = () => {
       <div className='product-detail-top'>
       
         <img src={product.imageURL} alt="" width={501} height={430} />
-        {console.log(product)}
 
         <div className='product-description'>
           <p><i>Product name:</i></p>
@@ -78,7 +77,7 @@ const ProductDetails = () => {
           <h4 className='price'>{'$' + product.price}</h4>
           <hr></hr>
           <p><i>Product tags:</i></p>
-          <h4 className='tags'>{product.tags.map((tag) => <p>#{tag}</p>)}</h4>
+          <h4 className='tags'>{product.tags.map((tag) => <p key={tag}>#{tag}</p>)}</h4>
           <hr></hr>
           {form && 
           <form noValidate>

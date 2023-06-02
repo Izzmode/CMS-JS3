@@ -27,7 +27,6 @@ export const validateProduct = ( formData, setErrors ) => {
     err.tags = 'You need to enter a tag'
   }
 
-    console.log(err)
     setErrors(err)
 
   return Object.keys(err).length <= 0

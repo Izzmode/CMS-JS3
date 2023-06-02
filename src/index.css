@@ -503,7 +503,8 @@
         display: flex;
         gap: 1rem;
         text-align: center;
-
+        display: flex;
+        justify-content: center;
     }
 
     .prevOrders a:visited{
